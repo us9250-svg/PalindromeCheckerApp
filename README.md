@@ -17,3 +17,5 @@ Use Case 8 :
 Linked List Based Palindrome Checker<br>
 Use Case 9 :
 Recursive Palindrome Checker<br>
+Use Case 10 :
+Case-Insensitive & Space-Ignored Palindrome<br>
