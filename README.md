@@ -21,3 +21,5 @@ Use Case 10 :
 Case-Insensitive & Space-Ignored Palindrome<br>
 Use Case 11 :
 Object-Oriented Palindrome Service<br>
+Use Case 12 :
+Strategy Pattern for Palindrome Algorithms (Advanced)<br>

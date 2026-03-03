@@ -1,39 +1,44 @@
 public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
-        // Define the input string
-        String input = "racecar";
+        // Define the input string from the example
+        String input = "level";
 
-        // Instantiate the service
-        PalindromeService service = new PalindromeService();
+        // Inject the concrete strategy (StackStrategy in this case)
+        PalindromeStrategy strategy = new StackStrategy();
 
-        // Call the checkPalindrome method
-        boolean isPalindrome = service.checkPalindrome(input);
+        // Execute the selected algorithm
+        boolean isPalindrome = strategy.check(input);
 
         // Display the expected output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
-class PalindromeService {
 
-    public boolean checkPalindrome(String input) {
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
-        // Initialize pointers
-        int start = 0;
-        int end = input.length() - 1;
+class StackStrategy implements PalindromeStrategy {
 
-        // Compare characters moving inward
-        while (start < end) {
-            // Check for mismatch
-            if (input.charAt(start) != input.charAt(end)) {
-                return false; // Exit immediately if it's not a palindrome
-            }
-            // Move pointers inward
-            start++;
-            end--;
+    public boolean check(String input) {
+        // Create a stack to store characters.
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+
+        // Push each character of the input string onto the stack.
+        for (char c : input.toCharArray()) {
+            stack.push(c);
         }
 
-        // If the loop finishes without returning false, it is a palindrome
+        // Compare characters by popping from the stack.
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false; // Exit early if mismatch found
+            }
+        }
+
+        // If all characters matched
         return true;
     }
 }
