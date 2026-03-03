@@ -1,35 +1,25 @@
-import java.util.LinkedList;
-public class PalindromeCheckerApp {
+public class PalindromeCheckerApp {public static void main(String[] args) {
+        String input = "madam";
 
-    public static void main(String[] args) {
-        String input = "level";
-
-        // Create a LinkedList to store characters
-        LinkedList<Character> list = new LinkedList<>();
-
-        // Add each character to the linked list
-        for (char c : input.toCharArray()) {
-            list.add(c); // Alternatively, list.addLast(c) does the same thing
-        }
-
-        // Flag to track palindrome state
-        boolean isPalindrome = true;
-
-        // Compare until only one or zero elements remain
-        while (list.size() > 1) {
-            // Remove from front and back of the LinkedList
-            char first = list.removeFirst();
-            char last = list.removeLast();
-
-            // If they don't match, it's not a palindrome
-            if (first != last) {
-                isPalindrome = false;
-                break; // Exit loop early
-            }
-        }
+        // Call the recursive method starting with the first and last indices
+        boolean isPalindrome = check(input, 0, input.length() - 1);
 
         // Display the expected output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+    private static boolean check(String s, int start, int end) {
+        // Base Condition 1: If the pointers meet or cross, all checks passed
+        if (start >= end) {
+            return true;
+        }
+
+        // Base Condition 2: If characters at current pointers don't match
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        // Recursive Call: Move the start pointer forward and end pointer backward
+        return check(s, start + 1, end - 1);
     }
 }
