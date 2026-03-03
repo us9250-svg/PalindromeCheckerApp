@@ -1,25 +1,39 @@
-public class PalindromeCheckerApp {public static void main(String[] args) {
+public class PalindromeCheckerApp {
+    public static void main(String[] args) {
         // Define the input string
-        String input = "A man a plan a canal Panama";
+        String input = "racecar";
 
-        // Normalize the string: remove non-alphanumeric characters and convert to lower case
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        // Instantiate the service
+        PalindromeService service = new PalindromeService();
 
-        // Flag to track palindrome state
-        boolean isPalindrome = true;
-
-        // Compare characters from both ends
-        for (int i = 0; i < normalized.length() / 2; i++) {
-
-            // Compare symmetric characters
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break; // Exit the loop early if a mismatch is found
-            }
-        }
+        // Call the checkPalindrome method
+        boolean isPalindrome = service.checkPalindrome(input);
 
         // Display the expected output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+}
+class PalindromeService {
+
+    public boolean checkPalindrome(String input) {
+
+        // Initialize pointers
+        int start = 0;
+        int end = input.length() - 1;
+
+        // Compare characters moving inward
+        while (start < end) {
+            // Check for mismatch
+            if (input.charAt(start) != input.charAt(end)) {
+                return false; // Exit immediately if it's not a palindrome
+            }
+            // Move pointers inward
+            start++;
+            end--;
+        }
+
+        // If the loop finishes without returning false, it is a palindrome
+        return true;
     }
 }

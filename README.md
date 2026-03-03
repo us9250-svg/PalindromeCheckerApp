@@ -19,3 +19,5 @@ Use Case 9 :
 Recursive Palindrome Checker<br>
 Use Case 10 :
 Case-Insensitive & Space-Ignored Palindrome<br>
+Use Case 11 :
+Object-Oriented Palindrome Service<br>
