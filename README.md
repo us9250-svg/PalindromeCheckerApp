@@ -11,3 +11,5 @@ Use Case 5 :
 Stack Based Palindrome Check<br>
 Use Case 6 :
 Queue + Stack Based Palindrome Check<br>
+Use Case 7 :
+Deque-Based Optimized Palindrome Checker<br>
